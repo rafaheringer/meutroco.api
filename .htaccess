@@ -1,8 +1,8 @@
 # Header
-Header always set Access-Control-Allow-Origin http://www.meutroco.com.br
-Header always set Access-Control-Allow-Credentials true
-Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-Header always set Access-Control-Allow-Headers x-requested-with
+#Header always set Access-Control-Allow-Origin http://www.meutroco.com.br
+#Header always set Access-Control-Allow-Credentials true
+#Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+#Header always set Access-Control-Allow-Headers x-requested-with
 
 # Options
 Options +FollowSymLinks
@@ -10,7 +10,7 @@ Options -Indexes
 
 # Conditions
 RewriteEngine on
-#RewriteBase /api.meutroco.com.br
+RewriteBase /api.meutroco.com.br
 #RewriteBase /
 RewriteCond %{SCRIPT_FILENAME} !-f 
 RewriteCond %{SCRIPT_FILENAME} !-d 
@@ -29,6 +29,7 @@ RewriteRule ^(.*)/tags/(.*)$ tags/index.php?who=$1&$2 [NC]
 
 ### Informações gerais do usuário
 RewriteRule ^user/(.*)$ users/index.php?$1 [NC]
+RewriteRule ^(.*)user/(.*)$ users/index.php?who=$1&$2 [NC]
 
 ### Acesso ao login do API
 RewriteRule ^login/$ access/index.php [NC]

@@ -1,29 +1,54 @@
 <?php
 /*
  * ======================================
- * Configurations
+ * Configurações
  * ======================================
  */
+
 //Charset
 header("Content-Type: text/html; charset=UTF-8", true); 
 
 //Test Server?
-define('TEST_SERVER',false);
+define('TEST_SERVER',true);
 
 //Local Database
 if(TEST_SERVER):
 	define('MYSQL_URL', '127.0.0.1');
 	define('MYSQL_USERNAME', 'root');
 	define('MYSQL_PASSWORD', '');
-	define('MYSQL_DBNAME', 'meutroco');
+	define('MYSQL_DBNAME', 'dev.meutroco');
+	define('MYSQL_PORT', '');
 
 //Web Database
 else:
-	define('MYSQL_URL', 'mysql.meutroco.com.br');
-	define('MYSQL_USERNAME', 'letsrider');
-	define('MYSQL_PASSWORD', '132435');
-	define('MYSQL_DBNAME', 'meutroco');
+	define('MYSQL_URL', 'localhost');
+	define('MYSQL_USERNAME', 'letsr890_admin');
+	define('MYSQL_PASSWORD', '0x15ox}R#_Oy');
+	define('MYSQL_DBNAME', 'letsr890_meutroco');
+	define('MYSQL_PORT', '');
 endif;
+
+//Messages CONFIG
+define('LANGUAGE', 'ptBR');
+
+
+//Other Stuff (PIR CONNECTION) //TODO: REMOVE
+$db_table_prefix = "";
+$websiteName = "";
+$websiteUrl = ""; //including trailing slash
+//Do you wish UserPie to send out emails for confirmation of registration?
+//We recommend this be set to true to prevent spam bots.
+//False = instant activation
+//If this variable is falses the resend-activation file not work.
+$emailActivation = false;
+$resend_activation_threshold = 1;					//In hours, how long before UserPie will allow a user to request another account activation email //Set to 0 to remove threshold
+$emailAddress = "noreply@meutroco.com.br";			//Tagged onto our outgoing emails
+$emailDate = date("l \\t\h\e jS");					//Date format used on email's
+$mail_templates_dir = "models/mail-templates/";		//Directory where txt files are stored for the email templates.
+$default_hooks = array("#WEBSITENAME#","#WEBSITEURL#","#DATE#");
+$default_replace = array($websiteName,$websiteUrl,$emailDate);
+$debug_mode = true;									//Display explicit error messages?
+$remember_me_length = "1wk";								//Remember me - amount of time to remain logged in.
 
 //Locale
 setlocale(LC_MONETARY, 'pt_BR');
@@ -285,5 +310,4 @@ class CurrentUser {
 		endif;
 	}
 }
-
 ?>

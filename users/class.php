@@ -48,7 +48,7 @@ class User {
 				"invitesCount"	=>	$data["invites_count"],
 				"lastLogin"		=>	$data["last_login"],
 				"thisSession"	=>	$data["this_session"],
-				"regiserDate"	=>	$data["register_date"],
+				"regiserDate"	=>	$data["sign_up_date"],
 				"newUser"		=>	($haveAccounts ==  1) ? false : true
 			);
 			array_push($json, $array);

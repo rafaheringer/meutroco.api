@@ -23,7 +23,7 @@ switch($request->getMethod()):
 			
 		//Get by transaction
 		elseif(!empty($_DATA['transaction'])):
-			isset($_DATA['count']) ? $count = intval($_DATA['count']) : $count = 50;
+			isset($_DATA['count']) ? $count = intval($_DATA['count']) : $count = 500;
 			isset($_DATA['orderby']) ? $orderby = $_DATA['orderby'] : $orderby = 'id';
 			isset($_DATA['order']) ? $order = $_DATA['order'] : $order = 'asc';
 			echo json_encode($tags->getTransactionTags($count, $_DATA['transaction'], $orderby, $order));
@@ -31,8 +31,8 @@ switch($request->getMethod()):
 			
 		//Get all tags
 		else:
-			isset($_DATA['count']) ? $count = intval($_DATA['count']) : $count = 50;
-			isset($_DATA['orderby']) ? $orderby = $_DATA['orderby'] : $orderby = 'id';
+			isset($_DATA['count']) ? $count = intval($_DATA['count']) : $count = 500;
+			isset($_DATA['orderby']) ? $orderby = $_DATA['orderby'] : $orderby = 'name';
 			isset($_DATA['order']) ? $order = $_DATA['order'] : $order = 'asc';
 			isset($_DATA['from']) ? $from = $_DATA['from'] : $from = "";
 			isset($_DATA['to']) ? $to = $_DATA['to'] : $to = "";

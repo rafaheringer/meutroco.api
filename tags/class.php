@@ -6,7 +6,7 @@ class Tags {
 	 * GET method, all tags
 	 * ======================================
 	 */
-	function get($count = 50, $orderby = null, $order = null, $from = null, $to = null) {
+	function get($count = 500, $orderby = null, $order = null, $from = null, $to = null) {
 		//Query
 		$sql = new DataBase;
 		$sql->connect();

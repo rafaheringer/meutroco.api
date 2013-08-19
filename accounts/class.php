@@ -16,7 +16,7 @@ class Accounts {
 		WHERE acc.profile_id = '".CurrentUser::getId()."'";
 		if(!empty($id))
 			$query .= " AND acc.id = '".$id."'";
-		$query .= " ORDER BY acc.id LIMIT ".$count;
+		$query .= " ORDER BY acc.account_type_id, acc.name LIMIT ".$count;
 		
 		//Execute
 		$sql->query($query);
@@ -34,7 +34,8 @@ class Accounts {
 					"profile_id"		=>	$data["profile_id"],
 					"initial_balance"	=>	$data["initial_balance"],
 					"account_type_id"	=>	$data["account_type_id"],
-					"balance"			=> 	$data["balance"]
+					"balance"			=> 	$data["balance"],
+					"status"			=>	$data["status"]
 				);
 				array_push($json, $array);
 			else:

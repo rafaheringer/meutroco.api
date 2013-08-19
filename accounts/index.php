@@ -225,20 +225,10 @@ switch($request->getMethod()) {
 			RestUtils::sendResponse('406',array('data' => 'accountId', 'message' => 'A conta escolhida n&atilde;o pertence ao usu&aacute;rio.'));
 			exit;
 		endif;
-			
-		//Remove transactions
-		$transactions = new Transactions;
-		foreach($transactions->get('all','','',$_DATA['id']) as $transaction):
-			$sql->query("DELETE FROM transactions_has_tags WHERE transaction_id = '".$transaction['id']."'");
-			$sql->query("DELETE FROM transactions WHERE id = '".$transaction['id']."'");
-		endforeach;
 
-		//Remove accounts balances
-		$sql->query("DELETE FROM accounts_month_balance WHERE account_id = '".$_DATA['id']."'");
-		
-		//Remove
-		$sql->query("DELETE FROM accounts WHERE id = '".$_DATA['id']."'");
-		
+		//Disable STATUS
+		 $sql->query("UPDATE accounts SET status = 0 WHERE id = '".$_DATA['id']."'");
+			
 		//Close Connection
 		$sql->close();
 		RestUtils::sendResponse('200');
